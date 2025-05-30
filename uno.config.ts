@@ -53,4 +53,9 @@ export default defineConfig({
       ],
     },
   },
+  theme: {
+    spacing: {
+      "4": "1rem",
+    },
+  },
 });
