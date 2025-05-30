@@ -5,7 +5,16 @@ import presetAnimations from "unocss-preset-animations";
 import { PresetAnimationsOptions } from "unocss-preset-animations";
 import { presetShadcn } from "unocss-preset-shadcn";
 
-const presetIconsOptions: IconsOptions = {};
+const presetIconsOptions: IconsOptions = {
+  autoInstall: true,
+  prefix: "i-",
+  extraProperties: {
+    display: "inline-block",
+    "vertical-align": "middle",
+    width: "2em",
+    height: "2em",
+  },
+};
 const presetAnimationsOptions: PresetAnimationsOptions = {};
 const presetWind3Options: PresetWind3Options = {
   variablePrefix: "un-",

@@ -10,7 +10,10 @@ function incNumber() {
 
 <template>
   <div class="flex p-5">
-    <Button variant="edit" @click="incNumber">Valor: {{ num }}</Button>
+    <Button variant="new" @click="incNumber">
+      <div class="i-mdi:account" />
+      Valor: {{ num }}
+    </Button>
     <div class=""></div>
   </div>
 </template>
