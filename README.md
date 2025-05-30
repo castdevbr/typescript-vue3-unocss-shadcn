@@ -3,6 +3,6 @@
 - vite
 - typescript
 - vue 3
-  auto-import
+- auto-import
   unocss
   shadcn-vue
