@@ -7,3 +7,6 @@
 - unocss
 - shadcn-vue
 - layout
+  vue-router
+  pesquisar
+  sidebar menu dinamico
