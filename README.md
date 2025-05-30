@@ -7,6 +7,11 @@
 - unocss
 - shadcn-vue
 - layout
-  vue-router
-  pesquisar
-  sidebar menu dinamico
+
+Proximos passos:
+
+- vue-router
+- pesquisar
+- sidebar menu dinamico
+- login
+- firebase
