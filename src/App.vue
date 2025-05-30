@@ -1,9 +1,7 @@
 <script setup lang="ts">
-const num = ref(3);
+import { Button } from "./components/ui/button";
 
-const num_comp = computed(() => {
-  return num.value + 1;
-});
+const num = ref(3);
 
 function incNumber() {
   num.value++;
@@ -11,8 +9,9 @@ function incNumber() {
 </script>
 
 <template>
-  <div class="flex justify-center bg-blue" @click="incNumber">
-    {{ num_comp }}
+  <div class="flex p-5">
+    <Button variant="edit" @click="incNumber">Valor: {{ num }}</Button>
+    <div class=""></div>
   </div>
 </template>
 
