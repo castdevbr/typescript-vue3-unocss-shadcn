@@ -4,5 +4,5 @@
 - typescript
 - vue 3
 - auto-import
-  unocss
+- unocss
   shadcn-vue
