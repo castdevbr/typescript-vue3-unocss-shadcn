@@ -46,7 +46,7 @@ const router = useRouter()
 async function logout() {
   try {
     await signOut(auth)
-    router.push('/login')
+    router.push('/public/login')
   } catch (err) {
     console.error(err)
   }
