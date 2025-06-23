@@ -13,5 +13,5 @@ Proximos passos:
 - vue-router
 - pesquisar
 - sidebar menu dinamico
-- login
-- firebase
+- login \* google
+- firebase / supabase
