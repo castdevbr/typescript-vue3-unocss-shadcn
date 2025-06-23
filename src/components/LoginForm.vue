@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useRouter, useRoute } from 'vue-router'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -9,11 +10,21 @@ import {
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+
+const router = useRouter()
+const route = useRoute()
+
+function onSubmit() {
+  localStorage.setItem('auth', 'true')
+  const redirect = route.query.redirect as string || '/p/dashboard'
+  router.replace(redirect)
+}
 </script>
 
 <template>
-  <Card class="mx-auto max-w-sm">
-    <CardHeader>
+  <form @submit.prevent="onSubmit">
+    <Card class="mx-auto max-w-sm">
+      <CardHeader>
       <CardTitle class="text-2xl">
         Login
       </CardTitle>
@@ -54,6 +65,7 @@ import { Label } from '@/components/ui/label'
           Sign up
         </a>
       </div>
-    </CardContent>
-  </Card>
+      </CardContent>
+    </Card>
+  </form>
 </template>
