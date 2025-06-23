@@ -3,6 +3,8 @@ import type { RouteRecordRaw } from "vue-router";
 import { auth } from "@/control/firebase";
 
 import AuthView from "@/views/AuthView.vue";
+import SignUpView from "@/views/SignUpView.vue";
+import ForgotPasswordView from "@/views/ForgotPasswordView.vue";
 import Dashboard from "@/views/Dashboard.vue";
 import PublicStart from "@/views/PublicStart.vue";
 import NotFound from "@/views/NotFound.vue";
@@ -20,9 +22,19 @@ const routes: RouteRecordRaw[] = [
     component: PublicStart,
   },
   {
-    path: "/public/login",
+    path: "/login",
     name: "login",
     component: AuthView,
+  },
+  {
+    path: "/signup",
+    name: "signup",
+    component: SignUpView,
+  },
+  {
+    path: "/forgot-password",
+    name: "forgot-password",
+    component: ForgotPasswordView,
   },
   {
     path: "/p",
