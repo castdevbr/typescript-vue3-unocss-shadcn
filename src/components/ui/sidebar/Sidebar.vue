@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { SidebarProps } from '.'
 import { cn } from '@/lib/utils'
-import { Sheet, SheetContent } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
+import { VisuallyHidden } from 'reka-ui'
 import { SIDEBAR_WIDTH_MOBILE, useSidebar } from './utils'
 
 defineOptions({
@@ -36,6 +37,9 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
         '--sidebar-width': SIDEBAR_WIDTH_MOBILE,
       }"
     >
+      <VisuallyHidden>
+        <SheetTitle>Sidebar</SheetTitle>
+      </VisuallyHidden>
       <div class="flex h-full w-full flex-col">
         <slot />
       </div>
