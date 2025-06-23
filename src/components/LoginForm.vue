@@ -65,9 +65,12 @@ async function loginWithGoogle() {
           <div class="grid gap-2">
             <div class="flex items-center">
               <Label for="password">Password</Label>
-              <a href="#" class="ml-auto inline-block text-sm underline">
+              <router-link
+                to="/forgot-password"
+                class="ml-auto inline-block text-sm underline"
+              >
                 Forgot your password?
-              </a>
+              </router-link>
             </div>
             <Input id="password" type="password" v-model="password" required />
           </div>
@@ -78,7 +81,7 @@ async function loginWithGoogle() {
         </div>
         <div class="mt-4 text-center text-sm">
           Don't have an account?
-          <a href="#" class="underline"> Sign up </a>
+          <router-link to="/signup" class="underline"> Sign up </router-link>
         </div>
       </CardContent>
     </Card>
