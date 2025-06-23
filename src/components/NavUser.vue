@@ -28,6 +28,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar'
+import { auth } from '@/control/firebase'
+import { signOut } from 'firebase/auth'
+import { useRouter } from 'vue-router'
 
 defineProps<{
   user: {
@@ -38,6 +41,16 @@ defineProps<{
 }>()
 
 const { isMobile } = useSidebar()
+const router = useRouter()
+
+async function logout() {
+  try {
+    await signOut(auth)
+    router.push('/login')
+  } catch (err) {
+    console.error(err)
+  }
+}
 </script>
 
 <template>
@@ -105,7 +118,7 @@ const { isMobile } = useSidebar()
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          <DropdownMenuItem @click="logout">
             <LogOut />
             Log out
           </DropdownMenuItem>
