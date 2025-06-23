@@ -32,7 +32,7 @@ const routes: RouteRecordRaw[] = [
     name: 'not-found',
     component: NotFound,
   },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(),
