@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import Dashboard from "./views/Dashboard.vue";
+import AuthView from "./views/AuthView.vue";
+// import Dashboard from "./views/Dashboard.vue";
 </script>
 
 <template>
-  <Dashboard></Dashboard>
+  <AuthView></AuthView>
 </template>
 
 <style scoped></style>
