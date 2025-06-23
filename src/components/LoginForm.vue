@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRouter, useRoute } from "vue-router";
+import { ref } from "vue";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,14 +11,33 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { auth, googleProvider } from "@/control/firebase";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
 const router = useRouter();
 const route = useRoute();
 
-function onSubmit() {
-  localStorage.setItem("auth", "true");
-  const redirect = (route.query.redirect as string) || "/p/dashboard";
-  router.replace(redirect);
+const email = ref("");
+const password = ref("");
+
+async function onSubmit() {
+  try {
+    await signInWithEmailAndPassword(auth, email.value, password.value);
+    const redirect = (route.query.redirect as string) || "/p/dashboard";
+    router.replace(redirect);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function loginWithGoogle() {
+  try {
+    await signInWithPopup(auth, googleProvider);
+    const redirect = (route.query.redirect as string) || "/p/dashboard";
+    router.replace(redirect);
+  } catch (err) {
+    console.error(err);
+  }
 }
 </script>
 
@@ -38,6 +58,7 @@ function onSubmit() {
               id="email"
               type="email"
               placeholder="m@example.com"
+              v-model="email"
               required
             />
           </div>
@@ -48,10 +69,12 @@ function onSubmit() {
                 Forgot your password?
               </a>
             </div>
-            <Input id="password" type="password" required />
+            <Input id="password" type="password" v-model="password" required />
           </div>
           <Button type="submit" class="w-full"> Login </Button>
-          <Button variant="outline" class="w-full"> Login with Google </Button>
+          <Button variant="outline" class="w-full" @click="loginWithGoogle">
+            Login with Google
+          </Button>
         </div>
         <div class="mt-4 text-center text-sm">
           Don't have an account?

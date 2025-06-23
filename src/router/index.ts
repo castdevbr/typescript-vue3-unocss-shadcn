@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
+import { auth } from "@/control/firebase";
 
 import AuthView from "@/views/AuthView.vue";
 import Dashboard from "@/views/Dashboard.vue";
@@ -47,7 +48,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to) => {
-  const isAuthenticated = !!localStorage.getItem("auth");
+  const isAuthenticated = !!auth.currentUser;
 
   if (to.meta.requiresAuth && !isAuthenticated) {
     return {
