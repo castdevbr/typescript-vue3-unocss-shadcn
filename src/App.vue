@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import AuthView from "./views/AuthView.vue";
-// import Dashboard from "./views/Dashboard.vue";
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <AuthView></AuthView>
+  <RouterView />
 </template>
 
 <style scoped></style>
