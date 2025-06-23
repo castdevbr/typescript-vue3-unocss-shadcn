@@ -17,6 +17,9 @@ import NavMain from '@/components/NavMain.vue'
 import NavProjects from '@/components/NavProjects.vue'
 import NavUser from '@/components/NavUser.vue'
 import TeamSwitcher from '@/components/TeamSwitcher.vue'
+import { auth } from '@/control/firebase'
+import { onAuthStateChanged } from 'firebase/auth'
+import { reactive } from 'vue'
 
 import {
   Sidebar,
@@ -30,12 +33,12 @@ const props = withDefaults(defineProps<SidebarProps>(), {
   collapsible: 'icon',
 })
 
-// This is sample data.
-const data = {
+// Sidebar data
+const data = reactive({
   user: {
-    name: 'shadcn',
-    email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
+    name: '',
+    email: '',
+    avatar: '',
   },
   teams: [
     {
@@ -158,7 +161,19 @@ const data = {
       icon: Map,
     },
   ],
-}
+})
+
+onAuthStateChanged(auth, (currentUser) => {
+  if (currentUser) {
+    data.user.name = currentUser.displayName ?? ''
+    data.user.email = currentUser.email ?? ''
+    data.user.avatar = currentUser.photoURL ?? ''
+  } else {
+    data.user.name = ''
+    data.user.email = ''
+    data.user.avatar = ''
+  }
+})
 </script>
 
 <template>
