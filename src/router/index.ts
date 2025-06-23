@@ -7,6 +7,7 @@ import Dashboard from "@/views/Dashboard.vue";
 import PublicStart from "@/views/PublicStart.vue";
 import NotFound from "@/views/NotFound.vue";
 import AddAccount from "@/views/accounts/AddAccount.vue";
+import SidebarLayout from "@/layouts/SidebarLayout.vue";
 
 const routes: RouteRecordRaw[] = [
   {
@@ -19,21 +20,26 @@ const routes: RouteRecordRaw[] = [
     component: PublicStart,
   },
   {
-    path: "/login",
+    path: "/public/login",
     name: "login",
     component: AuthView,
   },
   {
-    path: "/p/dashboard",
-    name: "dashboard",
-    component: Dashboard,
+    path: "/p",
+    component: SidebarLayout,
     meta: { requiresAuth: true },
-  },
-  {
-    path: "/p/account/add",
-    name: "add-account",
-    component: AddAccount,
-    meta: { requiresAuth: true },
+    children: [
+      {
+        path: "dashboard",
+        name: "dashboard",
+        component: Dashboard,
+      },
+      {
+        path: "account/add",
+        name: "add-account",
+        component: AddAccount,
+      },
+    ],
   },
   {
     path: "/:pathMatch(.*)*",
@@ -52,12 +58,12 @@ router.beforeEach((to) => {
 
   if (to.meta.requiresAuth && !isAuthenticated) {
     return {
-      path: "/login",
+      path: "/public/login",
       query: { redirect: to.fullPath },
     };
   }
 
-  if (to.path === "/login" && isAuthenticated) {
+  if (to.path === "/public/login" && isAuthenticated) {
     return "/p/dashboard";
   }
 });
