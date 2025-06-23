@@ -7,10 +7,9 @@
 - unocss
 - shadcn-vue
 - layout
+- vue-router
 
 Proximos passos:
-
-- vue-router
 - pesquisar
 - sidebar menu dinamico
 - login \* google
